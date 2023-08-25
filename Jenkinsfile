@@ -28,5 +28,23 @@ pipeline {
                 }
             }
         }
+      stage('build Images') {
+         steps {
+             sh '''
+             cd DB
+             docker build -t DB .
+             cd $WORKSPACE
+             cd UI
+             docker build -t UI .
+             cd $WORKSPACE
+             cd auth
+             docker build -t auth .
+             cd $WORKSPACE
+             cd weather
+             docker build -t weather .
+             cd $WORKSPACE
+             '''
+            }
+         }
     }
 }
