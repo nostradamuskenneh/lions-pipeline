@@ -2,6 +2,9 @@ pipeline {
     agent {
         label 'node'
     }
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('Dokerhub')
+    }
     stages {
       stage('clone') {
          steps {
@@ -46,6 +49,19 @@ pipeline {
              '''
             }
          }
+        stage('Login') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'Dokerhub',
+                        usernameVariable: 'DOCKER_HUB_USERNAME',
+                        passwordVariable: 'DOCKER_HUB_PASSWORD'
+                    )
+                ]) {
+                    sh "docker login -u ${DOCKER_HUB_USERNAME} -p ${DOCKER_HUB_PASSWORD}"
+                }
+            }
+        }
       stage('publish to dockerhub') {
          steps {
              sh '''
@@ -58,4 +74,8 @@ pipeline {
          }
     }
 }
+
+
+#####################
+
 
