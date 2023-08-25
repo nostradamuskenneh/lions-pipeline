@@ -32,10 +32,10 @@ pipeline {
          steps {
              sh '''
              cd DB
-             docker build -t oumarkenneh/DB .
+             docker build -t oumarkenneh/db .
              cd $WORKSPACE
              cd UI
-             docker build -t oumarkenneh/UI .
+             docker build -t oumarkenneh/ui .
              cd $WORKSPACE
              cd auth
              docker build -t oumarkenneh/auth .
