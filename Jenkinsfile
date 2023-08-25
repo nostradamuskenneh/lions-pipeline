@@ -33,26 +33,26 @@ pipeline {
          steps {
              sh '''
              cd DB
-             docker build -t oumarkenneh/db .
+             docker build -t oumarkenneh/db1 .
              cd $WORKSPACE
              cd UI
-             docker build -t oumarkenneh/ui .
+             docker build -t oumarkenneh/ui1 .
              cd $WORKSPACE
              cd auth
-             docker build -t oumarkenneh/auth .
+             docker build -t oumarkenneh/auth1 .
              cd $WORKSPACE
              cd weather
-             docker build -t oumarkenneh/weather .
+             docker build -t oumarkenneh/weather1 .
              '''
             }
          }
       stage('publish to dockerhub') {
          steps {
              sh '''
-             docker push oumarkenneh/db 
-             docker push oumarkenneh/ui 
-             docker push oumarkenneh/auth 
-             docker push oumarkenneh/weather 
+             docker push oumarkenneh/db1 
+             docker push oumarkenneh/ui1 
+             docker push oumarkenneh/auth1 
+             docker push oumarkenneh/weather1 
              '''
             }
          }
