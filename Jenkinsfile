@@ -42,7 +42,6 @@ pipeline {
              cd $WORKSPACE
              cd weather
              docker build -t oumarkenneh/weather .
-            
              '''
             }
          }
