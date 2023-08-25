@@ -32,16 +32,16 @@ pipeline {
          steps {
              sh '''
              cd DB
-             docker build -t DB .
+             docker build -t oumarkenneh/DB .
              cd $WORKSPACE
              cd UI
-             docker build -t UI .
+             docker build -t oumarkenneh/UI .
              cd $WORKSPACE
              cd auth
-             docker build -t auth .
+             docker build -t oumarkenneh/auth .
              cd $WORKSPACE
              cd weather
-             docker build -t weather .
+             docker build -t oumarkenneh/weather .
              cd $WORKSPACE
              '''
             }
