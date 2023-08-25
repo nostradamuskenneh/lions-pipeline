@@ -28,7 +28,8 @@ pipeline {
                 }
             }
         }
-      stage('build Images') {
+
+      stage('buildAndTagImages ') {
          steps {
              sh '''
              cd DB
@@ -45,7 +46,16 @@ pipeline {
              '''
             }
          }
+      stage('publish to dockerhub') {
+         steps {
+             sh '''
+             docker push oumarkenneh/db 
+             docker push oumarkenneh/ui 
+             docker push oumarkenneh/auth 
+             docker push oumarkenneh/weather 
+             '''
+            }
+         }
     }
 }
 
-s
